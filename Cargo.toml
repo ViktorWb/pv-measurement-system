@@ -1,0 +1,58 @@
+[package]
+name = "pv-measurement-system"
+version = "0.1.0"
+authors = ["Viktor Westberg, Alexander Eklund"]
+edition = "2021"
+resolver = "2"
+publish = false
+
+[patch.crates-io]
+smol = { git = "https://github.com/esp-rs-compat/smol" }
+polling = { git = "https://github.com/esp-rs-compat/polling" }
+socket2 = { git = "https://github.com/esp-rs-compat/socket2" }
+getrandom = { version = "0.2", git = "https://github.com/esp-rs-compat/getrandom.git" }
+#getrandom1 = { version = "0.1", git = "https://github.com/esp-rs-compat/getrandom.git", package = "getrandom", branch = "0.1" }
+embedded-io = { git = "https://github.com/ivmarkov/embedded-io" }
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true    # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+sender = []
+receiver = []
+
+[dependencies]
+esp-idf-sys = { version = "0.32", features = ["binstart"] }
+esp-idf-hal = { version = "0.40" }
+esp-idf-svc = { version = "0.45", features = ["experimental"] }
+embedded-svc = { version = "0.24.0", features = ["experimental"] }
+embedded-hal = "=1.0.0-alpha.9"
+embedded-hal-0-2 = { package = "embedded-hal", version = "0.2.7", features = ["unproven"] }
+
+getrandom = "0.2"
+sx127x_lora = "0.3.1"
+lorawan = { version = "0.7.2", features = ["with-downlink", "default-crypto"], default-features = false }
+lazy_static = "1.4.0"
+ads1x1x = "0.2.2"
+nb = "1.1.0"
+
+bit_field = "~0.10"
+
+smol = "1.2"
+async-io = "=1.12"
+sntp_request = "2.0.1"
+embedded-graphics = "0.7.1"
+ssd1306 = "0.7.1"
+aes-gcm = "0.10.1"
+generic-array = "0.14.7"
+konst = "0.3.5"
+url = "2"
+onewire = "0.3.13"
+
+[build-dependencies]
+embuild = "0.31"
