@@ -1,6 +1,6 @@
 ## Remote MPPT measurement and logging system for solar modules
 
-This repository contains the code for a remote measurement system for PV modules.
+This repository contains the code for a remote measurement system for PV modules. It also contains the KiCad files which were used to create the PCB.
 
 ### Configuration
 
