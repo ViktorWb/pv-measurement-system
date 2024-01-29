@@ -56,15 +56,6 @@ where
     let voltage_calibration = Box::leak(Box::new(calibration::Calibration::new()));
     let current_calibration = Box::leak(Box::new(calibration::Calibration::new()));
 
-    wifi.set_ssid_and_pass("uwe_at_home".to_string(), "bef7DIAF".to_string());
-    influx.configure(influx::Config {
-        host: "192.168.3.140".to_string(),
-        port: 8086,
-        org: "angstromlab".to_string(),
-        auth: "nKiG9TvFBHvyi2J0_ge9JjZTu-322ermASXzErFwJDJ7hxgnX33l7701Hdxs_bX2NZKcxwWJ1mYbSHD6ozWMaA==".to_string(),
-        bucket: "rooftop".to_string(),
-    });
-
     server::start_server(
         server::ServerConfigurations {
             wifi,
